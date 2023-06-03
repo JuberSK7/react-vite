@@ -7,7 +7,7 @@ import { navigate, setLoading, showError } from "../reducer/ui";
 function* signupSaga({payload}) {
 
     try {
-      yield put(loading(true))
+      yield put(setLoading(true))
       const response = yield call(signupApi, payload);
       console.log(response)
       yield put(navigate('/home'))

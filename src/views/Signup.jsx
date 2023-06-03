@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { signup } from "../redux/reducer/signup";
 import usersMock from "../common/users-mock";
+import Navigate from "../component/navigate";
 
 export default () => {
     let dispatch = useDispatch();
@@ -74,5 +75,6 @@ export default () => {
                 </Row>
             </div>            
         </Col>
+        <Navigate />
     </Container>
 }
