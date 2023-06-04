@@ -1,6 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 import { Navigate, Outlet } from "react-router-dom";
+import Root from '../root'
 
 
 const isAuthorized = () => {
@@ -12,6 +13,6 @@ const isAuthorized = () => {
     return flag;
 }
 export default  () => (
-  isAuthorized() ? ( <Outlet  /> ) : 
+  isAuthorized() ? ( <><Root /><Outlet /><Navigate to={{ pathname: '/home' }}/></> ) : 
     ( <Navigate to={{ pathname: '/login' }}/> )
 )

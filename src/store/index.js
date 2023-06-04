@@ -35,6 +35,6 @@ store.subscribe(_.throttle(() => {
   saveState({
     login: store.getState().login
   });
-}, 2000));
+}, 0));
 
 export default store;

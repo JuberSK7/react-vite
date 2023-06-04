@@ -1,7 +1,8 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import { signupApi } from "../../api/signup";
+import outsideHooks from "../../common/outsideHooks";
 import { signup } from "../reducer/signup";
-import { navigate, setLoading, showError } from "../reducer/ui";
+import { setLoading, showError } from "../reducer/ui";
 
 
 function* signupSaga({payload}) {
@@ -10,7 +11,7 @@ function* signupSaga({payload}) {
       yield put(setLoading(true))
       const response = yield call(signupApi, payload);
       console.log(response)
-      yield put(navigate('/home'))
+      outsideHooks.navigate('/home')
     } catch(error) {
       yield put(showError(error));
     }

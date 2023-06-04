@@ -11,10 +11,13 @@ const slice = createSlice({
         },
         login: (state, action) => {
             console.log(action.payload)
+        },
+        logout: (state, action) => {
+            state.session = action.payload
         }
     },
 });
 
-export const { login, loginSuccess } = slice.actions
+export const { login, loginSuccess, logout } = slice.actions
 
 export default slice.reducer

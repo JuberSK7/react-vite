@@ -1,35 +1,43 @@
-import { createBrowserRouter } from "react-router-dom";
-import Root from "../component/root";
+import { createBrowserRouter } from "react-router-dom"
+import Root from "../component/root"
+import Error from "../component/error"
 import NotFound from "../component/error/not-found"
-import Signup from "../views/Signup";
-import Login from "../views/Login";
-import Users from "../views/Users";
+import SecureRoot from "../component/secure-route"
+import Signup from "../views/Signup"
+import Login from "../views/Login"
+import Home from "../views/Home"
+import Logout from "../views/Logout"
 
 
 const router = createBrowserRouter([
     {
         path: "/signup",
         element: <Signup />,
-        errorElement: <NotFound />
+        errorElement: <Error />
     },
     {
         path: "/login",
         element: <Login />,
-        errorElement: <NotFound />
+        errorElement: <Error />
     },
     {
-        path: "/home",
+        path: "/logout",
+        element: <Logout />,
+        errorElement: <Error />
+    },
+    {
+        path: "/user",
         element: <Root />,
-        errorElement: <NotFound />
+        errorElement: <Error />
     },
     {
         path: "/",
-        element: <Root />,
-        errorElement: <NotFound />, 
+        element: <SecureRoot />,
+        errorElement: <Error />, 
         children: [
             {
-                path: "/users",
-                element: <Users />,
+                path: "/home",
+                element: <Home />,
             },
         ]
     }

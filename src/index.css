@@ -12,3 +12,8 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+
+.logout {
+  position: absolute;
+  right: 1rem;
+}

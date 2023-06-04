@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { signup } from "../redux/reducer/signup";
-import usersMock from "../common/users-mock";
-import Navigate from "../component/navigate";
+import Root from "../component/root";
 
 export default () => {
     let dispatch = useDispatch();
@@ -23,7 +22,7 @@ export default () => {
     return <Container fluid={true}>
         <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
-                <li className="breadcrumb-item" aria-current="page"><Link to="/">Home</Link></li>
+                <li className="breadcrumb-item" aria-current="page"><Link to="/login">Login</Link></li>
                 <li className="breadcrumb-item active" aria-current="page">Sign up</li>
             </ol>
         </nav>
@@ -69,12 +68,12 @@ export default () => {
                             </div>
                         </div>
                         <div className="col-12">
-                            <button type="submit" className="btn btn-primary">Sign up</button>
+                            <button type="submit" className="btn btn-primary w-100">Sign up</button>
                         </div>
                     </form>
                 </Row>
             </div>            
         </Col>
-        <Navigate />
+        <Root />
     </Container>
 }

@@ -12,15 +12,12 @@ const slice = createSlice({
         setLoading: (state, action) => {
             state.loading = action.payload
         },
-        navigate: (state, action) => {
-            state.path = action.payload
-        },
         showError: (state, action) => {
             
         }
     },
 });
 
-export const { setLoading, navigate, showError } = slice.actions
+export const { setLoading, showError } = slice.actions
 
 export default slice.reducer

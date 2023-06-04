@@ -1,14 +1,15 @@
-import { Container } from "react-bootstrap"
-import { Link, Navigate } from "react-router-dom"
+import { Navigate, useLocation, useNavigate } from "react-router-dom"
+import outsideHooks from "../../common/outsideHooks"
 import Loader from "../loader"
-import SecureRoute from "../secure-route"
 
-export default () => {
+export default (props) => {
+
+    outsideHooks.navigate = useNavigate()
+    outsideHooks.location = useLocation()
+
+    
 
     return <>
-        <Navigate to={'/users'} />
-        <SecureRoute />
         <Loader />
-        
     </>
 }

@@ -2,11 +2,12 @@ import React, { useEffect } from "react";
 import {Col, Row, Container} from 'react-bootstrap'
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import Loader from "../component/loader";
-import Navigate from "../component/navigate";
+import { Link } from "react-router-dom";
+import Root from "../component/root";
 import { login } from "../redux/reducer/login";
 
 export default () => {
+
     let dispatch = useDispatch();
     const { register, formState: { errors }, handleSubmit, setValue } = useForm();
     const onSubmit = data => {
@@ -20,6 +21,7 @@ export default () => {
     return <Container fluid={true}>
         <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
+                <li className="breadcrumb-item" aria-current="page"><Link to="/signup">Signup</Link></li>
                 <li className="breadcrumb-item active" aria-current="page">Login</li>
             </ol>
         </nav>
@@ -40,12 +42,12 @@ export default () => {
                             <div className="text-danger">{errors.password?.type === 'required' && "Password is required"}</div>
                         </div>
                         <div className="col-12">
-                            <button type="submit" className="btn btn-primary">Login</button>
+                            <button type="submit" className="btn btn-primary w-100">Login</button>
                         </div>
                     </form>
                 </Row>
             </div>            
         </Col>
-        <Navigate />
+        <Root />
     </Container>
 }

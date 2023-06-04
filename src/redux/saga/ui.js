@@ -1,6 +1,6 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 import { alert } from "../../common/modal";
-import { navigate, showError } from '../reducer/ui';
+import { showError } from '../reducer/ui';
 
 
 function* showErrorSaga({error}) {

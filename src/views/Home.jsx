@@ -1,27 +1,48 @@
 import React from 'react'
-import { Link, useNavigate } from "react-router-dom";
-import { Col, Row, Container, Button } from 'react-bootstrap';
-import { useSelector, useDispatch } from "react-redux";
-import { setLoading, setPath } from '../reducer/ui';
-import { histPush } from '../action/ui';
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { logout } from '../redux/reducer/login'
 
 export default () => {
-    const { loading } = useSelector((state) => state.ui)
-    let dispatch = useDispatch();
     
-    const buttonClick = () => {
-        console.log(loading)
-        dispatch(setPath('/signup'))
+    const { session } = useSelector(state => state.login)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const logoutHandler = () => {
+        dispatch(logout({}))
+        navigate('/login')
     }
-    const buttonClick2 = () => {
-        console.log(loading)
-        dispatch(setPath('/users'))
-    }
+
     return (
-        <Col>
-            <Row>Loading: {String(loading)}</Row>
-            <Button onClick={buttonClick}>Click</Button>
-            <Button onClick={buttonClick2}>Click 2</Button>
-        </Col>
+        <div className="container-fluid">
+            <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                    <li className="breadcrumb-item active" aria-current="page">Home</li>
+                    <li className="breadcrumb-item logout" aria-current="page"><Link to="/logout">Logout</Link></li>
+                </ol>
+            </nav>
+            <div className="border col-xs-12 col-sm-10 col-md-8 col-lg-6 p-4 mx-4">
+                <h3>Home</h3>
+                <div className="col">
+                    <div className='row p-2'>
+                        <div className='col-2'>Username: </div>
+                        <div className='col-10'><input className='w-100' defaultValue={session.username} /></div>
+                    </div>
+                    <div className='row  p-2'>
+                        <div className='col-2'>ID: </div>
+                        <div className='col-10'><input className='w-100' defaultValue={session.id} /></div>
+                    </div>
+                    <div className='row  p-2'>
+                        <div className='col-2'>Access Token</div>
+                        <div className='col-10'><textarea rows={5} className='w-100' defaultValue={session.accessToken}></textarea></div>
+                    </div>
+                    <div className='row  p-2'>
+                        <div className="col-12">
+                            <button onClick={logoutHandler} className='btn btn-danger w-100'>Logout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
