@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { signupApi } from "../../api/signup";
+import { signupApi } from "../../api/authv1";
 import outsideHooks from "../../common/outsideHooks";
 import { signup, signupFailed } from "../reducer/signup";
 import { setLoading, showError } from "../reducer/ui";
