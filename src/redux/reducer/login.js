@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 const slice = createSlice({
     name: 'login',
     initialState: {
-        session : {}
+        session : {},
+        loginFailed : false
     },
     reducers: {
         loginSuccess: (state, action) => {
@@ -14,10 +15,13 @@ const slice = createSlice({
         },
         logout: (state, action) => {
             state.session = action.payload
+        },
+        loginFailed: (state, action) => {
+            state.loginFailed = action.payload
         }
     },
 });
 
-export const { login, loginSuccess, logout } = slice.actions
+export const { login, loginSuccess, logout, loginFailed } = slice.actions
 
 export default slice.reducer

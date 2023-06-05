@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {Col, Row, Container} from 'react-bootstrap'
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { signup } from "../redux/reducer/signup";
+import { useDispatch, useSelector } from "react-redux";
+import { signup, signupFailed as registerFailed } from "../redux/reducer/signup";
 import Root from "../component/root";
 
 export default () => {
@@ -12,13 +12,14 @@ export default () => {
     const onSubmit = data => {
         dispatch(signup(data))
     }
-    /*let data = usersMock[Math.floor(Math.random()*usersMock.length)]
-    let roles = [['user', 'admin', 'super'][Math.floor(Math.random()*3)]]
-    setValue('name', data.name)
-    setValue('email', data.mail)
-    setValue('username', data.username)
-    setValue('password', 'cassandra')
-    setValue('roles', roles)*/
+    
+    useEffect(()=> {
+        dispatch(registerFailed(false))
+        setValue('password', '123456')
+    }, [])
+
+    const { signupFailed } = useSelector(state => state.signup)
+    
     return <Container fluid={true}>
         <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
@@ -70,6 +71,9 @@ export default () => {
                         <div className="col-12">
                             <button type="submit" className="btn btn-primary w-100">Sign up</button>
                         </div>
+                        {signupFailed && <div className="col -12 mx-1 alert alert-danger" role="alert">
+                            Username is already taken.
+                        </div>}
                     </form>
                 </Row>
             </div>            
