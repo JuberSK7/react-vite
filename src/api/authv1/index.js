@@ -9,5 +9,5 @@ export const loginApi = (payload) => {
 
 export const signupApi = (payload) => {
     console.log('############## api authv1 Signup ##############')
-    return post(SIGNUP_API, payload)
+    return axios.post(SIGNUP_API, payload)
 }

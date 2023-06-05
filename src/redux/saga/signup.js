@@ -11,7 +11,7 @@ function* signupSaga({payload}) {
       yield put(setLoading(true))
       const response = yield call(signupApi, payload);
       if(response.status === 202) {
-        outsideHooks.navigate('/home')
+        outsideHooks.navigate('/login')
       }
     } catch(error) {
       if( error.response && error.response.status == 403 ) {
